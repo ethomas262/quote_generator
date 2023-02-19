@@ -1,7 +1,14 @@
-const generateRanNum = () =>{
-    return Math.floor(Math.random() * 10)
-}
+let fs = require("fs")
 
-const contents = FileReader.readAsText("quotes.txt")
+const readFileLines = filename =>
+   fs.readFileSync(filename)
+   .toString('UTF8')
+   .split('\n');
 
-let quoteArr = contents.split(";")
+
+
+let quotes = readFileLines("quotes.txt")
+
+let numOfQuotes = quotes.length
+
+console.log(quotes[Math.floor(Math.random() * numOfQuotes) - 1])
